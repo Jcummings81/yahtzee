@@ -36,7 +36,7 @@ return(
             toggleKept={toggleKept}
             index={i}
         /> 
-        )
+                )
         })
     }
 

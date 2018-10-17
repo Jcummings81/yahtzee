@@ -32,7 +32,7 @@ class Game extends React.Component {
     toggleKept = (i) => {
         const { keep } = this.state
         let updated 
-
+        
             if (keep.includes(i))
                 updated = keep.filter(d => d !== i )
             else
