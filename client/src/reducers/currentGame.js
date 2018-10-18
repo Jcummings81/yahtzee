@@ -1,3 +1,4 @@
+import axios from 'axios'
 const ROLL_DICE = 'ROLL_DICE'
 const TOGGLE_KEPT = 'TOGGLE_KEPT'
 const RESET_ROLL = 'RESET_ROLL'
@@ -20,16 +21,26 @@ const scores = [
   { section: 'lower', name: 'Chance', score: null, addAll: true }
 ];
 
+const BASE_URL = ''
+
+export const postScore = (value) => {
+  return (dispatch) => {
+    axios.post(`${BASE_URL}/api/scores`, { score: { value }})
+  }
+}
+
 export const newGame = () => {
-  return {type: NEW_GAME}
+  return { type: NEW_GAME }
 }
 
 export const resetRoll = () => {
-  return {type: RESET_ROLL}
+  return { type: RESET_ROLL }
 }
-export const updateScores = () => {
-  return {type: RESET_ROLL}
+
+export const updateScores = (scores) => {
+  return { type: UPDATE_SCORES, scores }
 }
+
 export const rollDice = () => {
   return (dispatch, getState) => {
     const { keep, dice } = getState().currentGame
@@ -73,7 +84,7 @@ export default (
         roll: 0,
         dice: [...new Array(5)],
         keep: [],
-        scores: scores.map( s => {return {...s, score: null }})
+        scores: scores.map( s => { return {...s, score: null } })
       }
     case RESET_ROLL:
       return {

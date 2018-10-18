@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   mount_devise_token_auth_for 'User', at: 'api/auth'
   namespace :api do
+    resources :scores, only: [:index, :create]
     #API ROUTES SHOULD GO HERE
   end
 

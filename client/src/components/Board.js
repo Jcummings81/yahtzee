@@ -72,6 +72,8 @@ const Board = ({
   )
 }
 
+
+
 const mapStateToProps = (state) => {
   const { dice, keep, roll, scores } = state.currentGame
   return {
